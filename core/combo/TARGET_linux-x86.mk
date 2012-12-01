@@ -229,14 +229,14 @@ endef
 #
 # We perform a small check here to ensure that nothing bad can happen.
 #
-ifeq ($(TARGET_CPU_ABI),x86)
-  ifneq (true-true-true-true,$(ARCH_X86_HAVE_MMX)-$(ARCH_X86_HAVE_SSE)-$(ARCH_X86_HAVE_SSE2)-$(ARCH_X86_HAVE_SSE3))
-    $(info ERROR: Your x86 platform image is not compatible with the NDK x86 ABI)
-    $(info As such, you should *not* define TARGET_CPU_ABI to 'x86' in your BoardConfig.mk)
-    $(info to ensure that your device will not be mistakenly listed as compatible by
-    $(info the Android Market. Also, it is likely that the image will fail the CTS tests)
-    $(info Please undefine TARGET_CPU_ABI in your BoardConfig.mk, or select the value 'none')
-    $(info The corresponding image will still be able to run Dalvik-based Android applications)
-    $(error Aborting build! Please fix your BoardConfig.mk)
-  endif
-endif
+#ifeq ($(TARGET_CPU_ABI),x86)
+#  ifneq (true-true-true-true,$(ARCH_X86_HAVE_MMX)-$(ARCH_X86_HAVE_SSE)-$(ARCH_X86_HAVE_SSE2)-$(ARCH_X86_HAVE_SSE3))
+#    $(info ERROR: Your x86 platform image is not compatible with the NDK x86 ABI)
+#    $(info As such, you should *not* define TARGET_CPU_ABI to 'x86' in your BoardConfig.mk)
+#    $(info to ensure that your device will not be mistakenly listed as compatible by)
+#    $(info the Android Market. Also, it is likely that the image will fail the CTS tests)
+#    $(info Please undefine TARGET_CPU_ABI in your BoardConfig.mk, or select the value 'none')
+#    $(info The corresponding image will still be able to run Dalvik-based Android applications)
+#    $(error Aborting build! Please fix your BoardConfig.mk)
+#  endif
+#endif

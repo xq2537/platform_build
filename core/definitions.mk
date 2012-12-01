@@ -1153,7 +1153,9 @@ $(hide) $(PRIVATE_CXX) \
 	-Wl,-rpath,\$$ORIGIN/../lib \
 	-shared -Wl,-soname,$(notdir $@) \
 	$(PRIVATE_LDFLAGS) \
-	$(HOST_GLOBAL_LD_DIRS) \
+	$(if $(PRIVATE_NO_DEFAULT_LD_DIRS),, \
+	  $(HOST_GLOBAL_LD_DIRS) \
+	) \
 	$(if $(PRIVATE_NO_DEFAULT_COMPILER_FLAGS),, \
 	   $(HOST_GLOBAL_LDFLAGS) \
 	) \
@@ -1314,7 +1316,9 @@ $(hide) $(PRIVATE_CXX) \
 	$(call normalize-host-libraries,$(PRIVATE_ALL_SHARED_LIBRARIES)) \
 	-Wl,-rpath-link=$(HOST_OUT_INTERMEDIATE_LIBRARIES) \
 	-Wl,-rpath,\$$ORIGIN/../lib \
-	$(HOST_GLOBAL_LD_DIRS) \
+	$(if $(PRIVATE_NO_DEFAULT_LD_DIRS),, \
+	  $(HOST_GLOBAL_LD_DIRS) \
+	) \
 	$(PRIVATE_LDFLAGS) \
 	$(if $(PRIVATE_NO_DEFAULT_COMPILER_FLAGS),, \
 		$(HOST_GLOBAL_LDFLAGS) \
